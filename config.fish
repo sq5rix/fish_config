@@ -176,6 +176,17 @@ function yt
     fabric -y $argv[1] --transcript
 end
 
+# Git add, commit, and push in one command
+function gi
+    if test (count $argv) -eq 0
+        echo "Please provide a commit message"
+        return 1
+    end
+    git add .
+    git commit -m "$argv"
+    git push
+end
+
 # Loop through all files in the ~/.config/fabric/patterns directory
 for pattern_file in $HOME/.config/fabric/patterns/*
     # Get the base name of the file (i.e., remove the directory path)
